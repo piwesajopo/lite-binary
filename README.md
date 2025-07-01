@@ -35,3 +35,16 @@ To see how small is the generated binary compared to a normal C program, you can
 ```shell
 gcc stdhello.c -o stdhello
 ```
+
+## Multiplatform Support
+
+The original example only supports ARM64. Normally this is fine since you probably are working with very specific hardware.
+However, maybe you need to work with several architectures. This example also covers Linux x86-64.
+
+To run this on Apple Silicon using docker, just use the script `make-multi.sh`.
+
+To compile in Linux using gcc:
+
+```shell
+gcc -fno-builtin -nostartfiles -nostdlib -static -Wl,-e,_start multiplat-hello.c -o multihello
+```
